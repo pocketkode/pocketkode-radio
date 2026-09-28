@@ -69,7 +69,41 @@ def apply_update(app_dir):
         print("[update] couldn't finish:", e, flush=True)
 
 
+def drop_compiled(app_dir):
+    """Versions before 1.3.0 were compiled (app.so, lang.so…). Python loads a .so before a .py of the same name, so
+    after installing this version over one of them the old files must go. Right after an in-app update they're kept
+    in .update/prev with the other replaced files, so switching back to the previous version still works."""
+    if not os.path.exists(os.path.join(app_dir, "app.py")):  # switched back to a compiled version: keep it
+        return
+    old = [f for f in os.listdir(app_dir) if f.endswith(".so")]
+    if not old:
+        return
+    up = os.path.join(app_dir, ".update")
+    applied = os.path.join(up, "applied.json")
+    info = None
+    try:
+        with open(applied) as fh:
+            info = json.load(fh)
+    except (OSError, ValueError):
+        pass
+    for f in old:
+        try:
+            if info is not None:
+                os.makedirs(os.path.join(up, "prev"), exist_ok=True)
+                os.replace(os.path.join(app_dir, f), os.path.join(up, "prev", f))
+                info.setdefault("replaced", []).append(f)
+            else:
+                os.remove(os.path.join(app_dir, f))
+        except OSError as e:
+            print("[update] couldn't remove", f, e, flush=True)
+    if info is not None:
+        with open(applied, "w") as fh:
+            json.dump(info, fh)
+    print("[update] removed the compiled files of the previous version:", len(old), flush=True)
+
+
 apply_update(APP_DIR)  # before any of the app's modules are loaded
+drop_compiled(APP_DIR)
 sys.path.insert(0, APP_DIR)
 
 from app import App  # noqa: E402
