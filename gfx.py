@@ -3,7 +3,6 @@
 """Screen drawing: window, colours, text (English: the pixel font; other languages and names the pixel font can't
 show: a Noto font, see ttf.py), boxes, circles and bars."""
 import ctypes
-import math
 import os
 import unicodedata
 
@@ -38,7 +37,7 @@ class Screen:
             raise RuntimeError(f"SDL_Init failed: {sdl.GetError()}")
         sdl.SetHint(b"SDL_RENDER_SCALE_QUALITY", b"0")  # crisp pixels
         flags = sdl.WINDOW_SHOWN
-        if not os.environ.get("DC_WINDOWED"):
+        if not os.environ.get("PKR_WINDOWED"):
             flags |= sdl.WINDOW_FULLSCREEN_DESKTOP
         self.window = sdl.CreateWindow(title, sdl.WINDOWPOS_UNDEFINED, sdl.WINDOWPOS_UNDEFINED, W, H, flags)
         if not self.window:
@@ -126,31 +125,6 @@ class Screen:
         self.box(x, y + h - t, w, t, c)
         self.box(x, y, t, h, c)
         self.box(x + w - t, y, t, h, c)
-
-    def line(self, x1, y1, x2, y2, c):
-        self.color(c)
-        sdl.RenderDrawLine(self.r, int(x1), int(y1), int(x2), int(y2))
-
-    def disc(self, cx, cy, radius, c):
-        self.color(c)
-        r2 = radius * radius
-        for dy in range(-radius, radius + 1):
-            dx = int(math.sqrt(max(0, r2 - dy * dy)))
-            sdl.RenderDrawLine(self.r, int(cx - dx), int(cy + dy), int(cx + dx), int(cy + dy))
-
-    def ring(self, cx, cy, radius, c, t=2):
-        for k in range(t):
-            self.polygon([(cx + (radius - k) * math.cos(a), cy + (radius - k) * math.sin(a))
-                          for a in (i * math.pi / 60 for i in range(120))], c)
-
-    def polygon(self, pts, c):
-        """Closed outline through pts."""
-        self.color(c)
-        n = len(pts)
-        for i in range(n):
-            x1, y1 = pts[i]
-            x2, y2 = pts[(i + 1) % n]
-            sdl.RenderDrawLine(self.r, int(x1), int(y1), int(x2), int(y2))
 
     def bar(self, x, y, w, h, frac, c=None, back=None):
         self.box(x, y, w, h, back or C["key"])

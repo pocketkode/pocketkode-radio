@@ -249,9 +249,3 @@ class Updater:
             raise ValueError("The update package is empty.")
         with open(os.path.join(self.up, "ready.json"), "w") as f:
             json.dump({"version": info["version"], "from": self.version}, f)
-
-    def cancel_ready(self):
-        """Keep the current version after all."""
-        _rm(os.path.join(self.up, "new"))
-        _rm(os.path.join(self.up, "ready.json"))
-        self.state = "available" if self.info else None

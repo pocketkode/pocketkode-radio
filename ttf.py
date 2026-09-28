@@ -11,7 +11,7 @@ from collections import OrderedDict
 import sdl
 
 _CANDIDATES = [
-    os.environ.get("DC_SDL2_TTF_LIB", ""),
+    os.environ.get("PKR_SDL2_TTF_LIB", ""),
     "/usr/lib/libSDL2_ttf-2.0.so.0",
     "/usr/lib/libSDL2_ttf.so",
     "/usr/lib/aarch64-linux-gnu/libSDL2_ttf-2.0.so.0",

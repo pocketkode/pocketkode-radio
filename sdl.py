@@ -8,7 +8,7 @@ import ctypes.util
 import os
 
 _CANDIDATES = [
-    os.environ.get("DC_SDL2_LIB", ""),
+    os.environ.get("PKR_SDL2_LIB", ""),
     "/usr/lib/libSDL2-2.0.so.0",
     "/usr/lib/libSDL2.so",
     "/usr/lib/aarch64-linux-gnu/libSDL2-2.0.so.0",

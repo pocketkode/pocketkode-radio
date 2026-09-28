@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "Blijft spelen · druk op MENU om het weer aan te zetten",
     "What's new · A to update": "Nieuw · A om te updaten", "Downloaded · restart to finish": "Gedownload · herstart om af te ronden",
     "Update available: {v}": "Update beschikbaar: {v}",
-    "Radio": "Radio", "Stations from around the world": "Zenders van over de hele wereld", 
+    "Radio": "Radio", "Stations from around the world": "Zenders van over de hele wereld",
     "Podcasts": "Podcasts", "{n} subscribed": "{n} abonnementen", "Search, subscribe, download": "Zoeken, abonneren, downloaden",
     "Settings": "Instellingen", "Your country, podcast region, downloads, language": "Je land, podcastregio, downloads, taal",
-    "About": "Info", "Version {v}": "Versie {v}", "Open": "Openen", "Quit": "Stoppen", 
-    # full version features (activation screen)
+    "About": "Info", "Version {v}": "Versie {v}", "Open": "Openen", "Quit": "Stoppen",
     # radio
     "Favourites": "Favorieten", "Recently played": "Recent beluisterd", "Top stations": "Topzenders", "Most played worldwide": "Wereldwijd het meest beluisterd",
     "Stations in {country}": "Zenders in {country}", "Most played first": "Meest beluisterd eerst",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "Niet ingesteld (kies bij Radio > Per land)", "Podcast charts": "Podcasthitlijst",
     "Language": "Taal", "Change": "Wijzigen", "Delete all downloads": "Alle downloads verwijderen", "Check for updates": "Controleren op updates",
     "On · a notice when a new version is out": "Aan · een melding als er een nieuwe versie is", "Off": "Uit", "Check now": "Nu controleren",
-    "You have version {v}": "Je hebt versie {v}", 
+    "You have version {v}": "Je hebt versie {v}",
     "Delete all downloads?": "Alle downloads verwijderen?",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "Gedownloade afleveringen worden van de handheld verwijderd. Je abonnementen en luistervoortgang blijven bewaard.",
@@ -83,7 +82,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "Je favorieten, abonnementen en geschiedenis blijven op de handheld. Geen advertenties, geen analyse, geen tracking.",
     # notices
-    "Updated": "Bijgewerkt", "Update undone": "Update teruggedraaid", 
+    "Updated": "Bijgewerkt", "Update undone": "Update teruggedraaid",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio is nu versie {v}. Je zenders, podcasts en instellingen zijn bewaard.",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "Versie {bad} startte niet, dus PocketKode Radio is teruggegaan naar {v}. Mail naar feedback@pocketkode.com.",
@@ -95,7 +94,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "mpv is niet geïnstalleerd op dit systeem.",
     "This couldn't be played. The station or episode may be offline.": "Dit kon niet worden afgespeeld. De zender of aflevering is misschien offline.",
     "This podcast's feed couldn't be read.": "De feed van deze podcast kon niet worden gelezen.",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "Gratis en open source (MIT-licentie). Zie LICENSE in de map van de app.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "Voor updates leest de app de nieuwste release op GitHub (dit kun je uitzetten in Instellingen). Hij stuurt niets over jou of de handheld.",
 }

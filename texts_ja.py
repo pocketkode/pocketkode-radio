@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "再生は続きます · MENU で画面がつきます",
     "What's new · A to update": "新しい点 · A でアップデート", "Downloaded · restart to finish": "ダウンロード済み · 再起動して完了",
     "Update available: {v}": "アップデートがあります：{v}",
-    "Radio": "ラジオ", "Stations from around the world": "世界中のラジオ局", 
+    "Radio": "ラジオ", "Stations from around the world": "世界中のラジオ局",
     "Podcasts": "ポッドキャスト", "{n} subscribed": "{n} 番組を購読中", "Search, subscribe, download": "検索、購読、ダウンロード",
     "Settings": "設定", "Your country, podcast region, downloads, language": "国、ポッドキャストの地域、ダウンロード、言語",
-    "About": "情報", "Version {v}": "バージョン {v}", "Open": "開く", "Quit": "終了", 
-    # full version features (activation screen)
+    "About": "情報", "Version {v}": "バージョン {v}", "Open": "開く", "Quit": "終了",
     # radio
     "Favourites": "お気に入り", "Recently played": "最近聴いた局", "Top stations": "人気局", "Most played worldwide": "世界で最も聴かれている局",
     "Stations in {country}": "{country}のラジオ局", "Most played first": "よく聴かれている順",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "未設定（ラジオ > 国別 で選択）", "Podcast charts": "ポッドキャストのランキング",
     "Language": "言語", "Change": "変更", "Delete all downloads": "すべてのダウンロードを削除", "Check for updates": "アップデートの確認",
     "On · a notice when a new version is out": "オン · 新しいバージョンが出たら通知", "Off": "オフ", "Check now": "今すぐ確認",
-    "You have version {v}": "現在のバージョン {v}", 
+    "You have version {v}": "現在のバージョン {v}",
     "Delete all downloads?": "すべてのダウンロードを削除しますか？",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "ダウンロードしたエピソードを携帯ゲーム機から削除します。購読と再生位置は残ります。",
@@ -83,7 +82,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "お気に入り、購読、履歴は携帯ゲーム機に保存されます。広告、アクセス解析、トラッキングは一切ありません。",
     # notices
-    "Updated": "アップデートしました", "Update undone": "アップデートを取り消しました", 
+    "Updated": "アップデートしました", "Update undone": "アップデートを取り消しました",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio はバージョン {v} になりました。ラジオ局、ポッドキャスト、設定はそのままです。",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "バージョン {bad} が起動しなかったため、PocketKode Radio は {v} に戻りました。feedback@pocketkode.com までメールしてください。",
@@ -95,7 +94,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "このシステムには mpv がインストールされていません。",
     "This couldn't be played. The station or episode may be offline.": "再生できませんでした。ラジオ局かエピソードがオフラインの可能性があります。",
     "This podcast's feed couldn't be read.": "このポッドキャストのフィードを読み取れませんでした。",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "無料のオープンソースです（MIT ライセンス）。アプリのフォルダーの LICENSE をご覧ください。",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "アップデートのために GitHub の最新リリースを読み込みます（設定でオフにできます）。あなたや携帯ゲーム機についての情報は何も送りません。",
 }

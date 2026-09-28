@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "계속 재생 · MENU를 누르면 화면이 켜집니다",
     "What's new · A to update": "새로운 점 · A로 업데이트", "Downloaded · restart to finish": "다운로드 완료 · 다시 시작하면 끝납니다",
     "Update available: {v}": "업데이트 있음: {v}",
-    "Radio": "라디오", "Stations from around the world": "전 세계의 방송국", 
+    "Radio": "라디오", "Stations from around the world": "전 세계의 방송국",
     "Podcasts": "팟캐스트", "{n} subscribed": "{n}개 구독 중", "Search, subscribe, download": "검색, 구독, 다운로드",
     "Settings": "설정", "Your country, podcast region, downloads, language": "내 나라, 팟캐스트 지역, 다운로드, 언어",
-    "About": "정보", "Version {v}": "버전 {v}", "Open": "열기", "Quit": "종료", 
-    # full version features (activation screen)
+    "About": "정보", "Version {v}": "버전 {v}", "Open": "열기", "Quit": "종료",
     # radio
     "Favourites": "즐겨찾기", "Recently played": "최근 재생", "Top stations": "인기 방송국", "Most played worldwide": "전 세계에서 가장 많이 듣는 방송국",
     "Stations in {country}": "{country}의 방송국", "Most played first": "많이 듣는 순",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "설정 안 됨(라디오 > 국가별에서 선택)", "Podcast charts": "팟캐스트 차트",
     "Language": "언어", "Change": "변경", "Delete all downloads": "모든 다운로드 삭제", "Check for updates": "업데이트 확인",
     "On · a notice when a new version is out": "켬 · 새 버전이 나오면 알림", "Off": "끔", "Check now": "지금 확인",
-    "You have version {v}": "현재 버전 {v}", 
+    "You have version {v}": "현재 버전 {v}",
     "Delete all downloads?": "모든 다운로드를 삭제할까요?",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "내려받은 에피소드가 기기에서 삭제됩니다. 구독과 듣던 위치는 그대로 남습니다.",
@@ -83,7 +82,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "즐겨찾기, 구독, 기록은 기기에 남습니다. 광고, 분석, 추적이 전혀 없습니다.",
     # notices
-    "Updated": "업데이트됨", "Update undone": "업데이트 취소됨", 
+    "Updated": "업데이트됨", "Update undone": "업데이트 취소됨",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio가 버전 {v}이(가) 되었습니다. 방송국, 팟캐스트, 설정은 그대로입니다.",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "버전 {bad}이(가) 시작되지 않아 PocketKode Radio가 {v}(으)로 돌아갔습니다. feedback@pocketkode.com으로 메일을 보내 주세요.",
@@ -95,7 +94,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "이 시스템에는 mpv가 설치되어 있지 않습니다.",
     "This couldn't be played. The station or episode may be offline.": "재생할 수 없습니다. 방송국이나 에피소드가 오프라인일 수 있습니다.",
     "This podcast's feed couldn't be read.": "이 팟캐스트의 피드를 읽지 못했습니다.",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "무료 오픈 소스입니다(MIT 라이선스). 앱 폴더의 LICENSE를 참고하세요.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "업데이트를 위해 GitHub의 최신 릴리스를 확인합니다(설정에서 끌 수 있습니다). 사용자나 기기에 관한 정보는 아무것도 보내지 않습니다.",
 }

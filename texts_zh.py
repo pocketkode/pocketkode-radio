@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "继续播放 · 按 MENU 重新点亮屏幕",
     "What's new · A to update": "新内容 · 按 A 更新", "Downloaded · restart to finish": "已下载 · 重启以完成",
     "Update available: {v}": "有可用更新：{v}",
-    "Radio": "电台", "Stations from around the world": "来自世界各地的电台", 
+    "Radio": "电台", "Stations from around the world": "来自世界各地的电台",
     "Podcasts": "播客", "{n} subscribed": "已订阅 {n} 个", "Search, subscribe, download": "搜索、订阅、下载",
     "Settings": "设置", "Your country, podcast region, downloads, language": "你的国家、播客地区、下载、语言",
-    "About": "关于", "Version {v}": "版本 {v}", "Open": "打开", "Quit": "退出", 
-    # full version features (activation screen)
+    "About": "关于", "Version {v}": "版本 {v}", "Open": "打开", "Quit": "退出",
     # radio
     "Favourites": "收藏", "Recently played": "最近收听", "Top stations": "热门电台", "Most played worldwide": "全球收听最多",
     "Stations in {country}": "{country}的电台", "Most played first": "按收听次数排序",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "未设置（在 电台 > 按国家 中选择）", "Podcast charts": "播客排行榜",
     "Language": "语言", "Change": "更改", "Delete all downloads": "删除所有下载", "Check for updates": "检查更新",
     "On · a notice when a new version is out": "开 · 有新版本时提醒", "Off": "关", "Check now": "立即检查",
-    "You have version {v}": "当前版本 {v}", 
+    "You have version {v}": "当前版本 {v}",
     "Delete all downloads?": "删除所有下载？",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "已下载的单集会从掌机上删除。你的订阅和收听进度都会保留。",
@@ -81,7 +80,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "你的收藏、订阅和历史记录都保存在掌机上。没有广告、没有统计分析、没有跟踪。",
     # notices
-    "Updated": "已更新", "Update undone": "更新已撤销", 
+    "Updated": "已更新", "Update undone": "更新已撤销",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio 现在是 {v} 版。你的电台、播客和设置都已保留。",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "{bad} 版无法启动，因此 PocketKode Radio 已恢复到 {v} 版。请发邮件至 feedback@pocketkode.com。",
@@ -93,7 +92,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "此系统没有安装 mpv。",
     "This couldn't be played. The station or episode may be offline.": "无法播放。电台或单集可能已下线。",
     "This podcast's feed couldn't be read.": "无法读取该播客的订阅源。",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "免费开源（MIT 许可证）。请参阅应用文件夹中的 LICENSE。",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "为了更新，它会读取 GitHub 上的最新版本（可在设置中关闭）。它不会发送任何关于你或掌机的信息。",
 }

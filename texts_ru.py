@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "Продолжает играть · MENU включит экран",
     "What's new · A to update": "Что нового · A — обновить", "Downloaded · restart to finish": "Скачано · перезапустите для завершения",
     "Update available: {v}": "Доступно обновление: {v}",
-    "Radio": "Радио", "Stations from around the world": "Станции со всего мира", 
+    "Radio": "Радио", "Stations from around the world": "Станции со всего мира",
     "Podcasts": "Подкасты", "{n} subscribed": "подписок: {n}", "Search, subscribe, download": "Поиск, подписка, загрузка",
     "Settings": "Настройки", "Your country, podcast region, downloads, language": "Ваша страна, регион подкастов, загрузки, язык",
-    "About": "О программе", "Version {v}": "Версия {v}", "Open": "Открыть", "Quit": "Выход", 
-    # full version features (activation screen)
+    "About": "О программе", "Version {v}": "Версия {v}", "Open": "Открыть", "Quit": "Выход",
     # radio
     "Favourites": "Избранное", "Recently played": "Недавно прослушанные", "Top stations": "Популярные станции", "Most played worldwide": "Самые популярные в мире",
     "Stations in {country}": "Станции: {country}", "Most played first": "Сначала самые популярные",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "Не выбрана (выберите в Радио > По странам)", "Podcast charts": "Чарты подкастов",
     "Language": "Язык", "Change": "Изменить", "Delete all downloads": "Удалить все загрузки", "Check for updates": "Проверять обновления",
     "On · a notice when a new version is out": "Вкл. · уведомление о новой версии", "Off": "Выкл.", "Check now": "Проверить сейчас",
-    "You have version {v}": "У вас версия {v}", 
+    "You have version {v}": "У вас версия {v}",
     "Delete all downloads?": "Удалить все загрузки?",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "Скачанные выпуски будут удалены с консоли. Подписки и прогресс прослушивания сохранятся.",
@@ -83,7 +82,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "Избранное, подписки и история хранятся на консоли. Без рекламы, аналитики и слежки.",
     # notices
-    "Updated": "Обновлено", "Update undone": "Обновление отменено", 
+    "Updated": "Обновлено", "Update undone": "Обновление отменено",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio обновлён до версии {v}. Станции, подкасты и настройки сохранены.",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "Версия {bad} не запустилась, поэтому PocketKode Radio вернулся к {v}. Напишите на feedback@pocketkode.com.",
@@ -95,7 +94,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "В этой системе не установлен mpv.",
     "This couldn't be played. The station or episode may be offline.": "Не удалось воспроизвести. Возможно, станция или выпуск недоступны.",
     "This podcast's feed couldn't be read.": "Не удалось прочитать ленту этого подкаста.",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "Бесплатное приложение с открытым исходным кодом (лицензия MIT). См. LICENSE в папке приложения.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "Для обновлений приложение читает последний выпуск на GitHub (это можно выключить в настройках). Оно ничего не отправляет о вас или о консоли.",
 }

@@ -12,11 +12,10 @@ TEXTS = {
     "Keeps playing · press MENU to turn it back on": "Sigue sonando · pulsa MENU para encenderla",
     "What's new · A to update": "Novedades · A para actualizar", "Downloaded · restart to finish": "Descargada · reinicia para terminar",
     "Update available: {v}": "Actualización disponible: {v}",
-    "Radio": "Radio", "Stations from around the world": "Emisoras de todo el mundo", 
+    "Radio": "Radio", "Stations from around the world": "Emisoras de todo el mundo",
     "Podcasts": "Pódcasts", "{n} subscribed": "{n} suscritos", "Search, subscribe, download": "Busca, suscríbete, descarga",
     "Settings": "Ajustes", "Your country, podcast region, downloads, language": "Tu país, región de pódcasts, descargas, idioma",
-    "About": "Info", "Version {v}": "Versión {v}", "Open": "Abrir", "Quit": "Salir", 
-    # full version features (activation screen)
+    "About": "Info", "Version {v}": "Versión {v}", "Open": "Abrir", "Quit": "Salir",
     # radio
     "Favourites": "Favoritas", "Recently played": "Escuchadas recientemente", "Top stations": "Más escuchadas", "Most played worldwide": "Las más escuchadas del mundo",
     "Stations in {country}": "Emisoras de {country}", "Most played first": "Las más escuchadas primero",
@@ -55,7 +54,7 @@ TEXTS = {
     "Not set (choose in Radio > By country)": "Sin elegir (elígelo en Radio > Por país)", "Podcast charts": "Listas de pódcasts",
     "Language": "Idioma", "Change": "Cambiar", "Delete all downloads": "Borrar todas las descargas", "Check for updates": "Buscar actualizaciones",
     "On · a notice when a new version is out": "Sí · un aviso cuando salga una versión nueva", "Off": "No", "Check now": "Comprobar ahora",
-    "You have version {v}": "Tienes la versión {v}", 
+    "You have version {v}": "Tienes la versión {v}",
     "Delete all downloads?": "¿Borrar todas las descargas?",
     "Downloaded episodes are removed from the handheld. Your subscriptions and listening progress are kept.":
         "Los episodios descargados se borran de la consola. Tus suscripciones y tu progreso se conservan.",
@@ -83,7 +82,7 @@ TEXTS = {
     "Your favourites, subscriptions and history stay on the handheld. No ads, no analytics, no tracking.":
         "Tus favoritas, suscripciones e historial se quedan en la consola. Sin anuncios, sin analíticas, sin rastreo.",
     # notices
-    "Updated": "Actualizada", "Update undone": "Actualización deshecha", 
+    "Updated": "Actualizada", "Update undone": "Actualización deshecha",
     "PocketKode Radio is now version {v}. Your stations, podcasts and settings were kept.": "PocketKode Radio ya es la versión {v}. Tus emisoras, pódcasts y ajustes se han conservado.",
     "Version {bad} didn't start, so PocketKode Radio went back to {v}. Please email feedback@pocketkode.com.":
         "La versión {bad} no arrancó, así que PocketKode Radio volvió a la {v}. Escribe a feedback@pocketkode.com.",
@@ -95,7 +94,7 @@ TEXTS = {
     "mpv isn't installed on this system.": "mpv no está instalado en este sistema.",
     "This couldn't be played. The station or episode may be offline.": "No se pudo reproducir. La emisora o el episodio puede estar desconectado.",
     "This podcast's feed couldn't be read.": "No se pudo leer el feed de este pódcast.",
-    # full version free forever (2026-09-28)
+    # about and privacy
     "Free and open source (MIT License). See LICENSE in the app folder.": "Gratis y de código abierto (licencia MIT). Consulta LICENSE en la carpeta de la app.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings). It sends nothing about you or the handheld.": "Para las actualizaciones consulta la última versión publicada en GitHub (puedes desactivarlo en Ajustes). No envía nada sobre ti ni sobre la consola.",
 }
