@@ -16,6 +16,12 @@ Download `PocketKodeRadio-<version>.muxapp` from the [latest release](https://gi
 copy it to the `ARCHIVE` folder on SD card 1, then open **Applications → Archive Manager** and install it. Turn on
 **Wi-Fi**, then open **Applications → PocketKode Radio**.
 
+## Guides
+
+A step-by-step guide with pictures (installing, finding stations, podcasts, the screen off and the sleep timer):
+[Internet radio and podcasts on your Anbernic RG40XXH](https://pocketkode.com/blog/internet-radio-podcasts-muos-rg40xxh/)
+on pocketkode.com.
+
 ## Radio
 
 Thousands of stations from around the world, from the community-run [Radio Browser](https://www.radio-browser.info) directory.
