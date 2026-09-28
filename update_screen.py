@@ -4,7 +4,7 @@
 import time
 
 from gfx import C, W
-from lang import _, tr
+from i18n import _, tr
 
 
 class UpdateScreen:

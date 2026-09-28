@@ -46,8 +46,9 @@ done
 
 echo "==> Assembling app folder"
 rm -rf "$DIST/stage"
-mkdir -p "$STAGE/glyph"
+mkdir -p "$STAGE/glyph" "$STAGE/lang"
 cp "$SRC"/*.py "$SRC/mux_launch.sh" "$SRC/README.md" "$SRC/LICENSE" "$STAGE/"
+cp "$SRC"/lang/*.json "$STAGE/lang/"
 cp "$SRC"/glyph/* "$STAGE/glyph/"
 mkdir -p "$STAGE/fonts" "$STAGE/licenses"
 for entry in "${FONTS[@]}"; do
@@ -58,12 +59,19 @@ done
 chmod +x "$STAGE/mux_launch.sh"
 find "$STAGE" \( -name "__pycache__" -o -name ".DS_Store" \) -prune -exec rm -rf {} +
 
-echo "==> Checking Python syntax"
+echo "==> Checking Python syntax and translations"
 python3 - "$STAGE" <<'EOF'
-import ast, pathlib, sys
-for p in pathlib.Path(sys.argv[1]).glob("*.py"):
+import ast, json, pathlib, sys
+app = pathlib.Path(sys.argv[1])
+for p in app.glob("*.py"):
     ast.parse(p.read_text(), str(p))
-print("  ok")
+langs = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(app.glob("lang/*.json"))}
+every = set().union(*(d["texts"] for d in langs.values()))
+for code, d in langs.items():
+    missing = every - set(d["texts"])
+    if missing:
+        print(f"  {code}: {len(missing)} texts not translated yet (they show in English)")
+print(f"  ok ({len(langs)} translations)")
 EOF
 
 echo "==> Packaging"

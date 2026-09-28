@@ -6,10 +6,11 @@ The choice ("auto" or a language code) is kept in data/language. Auto follows mu
 (Configuration > Language); a language the app doesn't have means English.
 Texts are written in English in the code: _("Text {n}", n=3) returns the translation when there is one.
 tr() does the same for messages made elsewhere (updates, network errors), matching whole sentences or patterns.
-Translations: the shared parts are in lang_common.py, the app's own texts in texts_<code>.py (loaded when needed).
-A text missing from a translation stays English.
+Translations are in lang/<code>.json (loaded when needed): {"texts": {English: translation},
+"patterns": {regular expression: replacement}}. A text missing from a translation stays English, and so does
+the whole app if a file is missing or can't be read.
 """
-import importlib
+import json
 import os
 import re
 import time
@@ -67,20 +68,21 @@ def _apply():
         _load(code)
 
 
+LANG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lang")
+
+
 def _load(code):
     texts, patterns = {}, []
     if code != "en":
-        import lang_common
-        texts.update(lang_common.COMMON.get(code, {}))
-        patterns += lang_common.PATTERNS.get(code, [])
         try:
-            mod = importlib.import_module("texts_" + code)
-            texts.update(getattr(mod, "TEXTS", {}))
-            patterns = list(getattr(mod, "PATTERNS", [])) + patterns
-        except ImportError:
-            pass
+            with open(os.path.join(LANG_DIR, code + ".json"), encoding="utf-8") as f:
+                d = json.load(f)
+            texts = dict(d.get("texts", {}))
+            patterns = [(re.compile(p), r) for p, r in d.get("patterns", {}).items()]
+        except (OSError, ValueError, re.error) as e:
+            print(f"[lang] can't read lang/{code}.json: {e}", flush=True)
     _state["texts"] = texts
-    _state["patterns"] = [(re.compile(p), r) for p, r in patterns]
+    _state["patterns"] = patterns
     _state["loaded"] = code
 
 

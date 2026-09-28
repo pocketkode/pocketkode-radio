@@ -7,14 +7,14 @@ import subprocess
 import threading
 import time
 
-import lang
+import i18n
 import net
 import podcasts
 import sdl
 import updater
 from gfx import C, H, W, Screen
 from keepawake import KeepAwake
-from lang import _, tr
+from i18n import _, tr
 from pad import Pad
 from player import Player
 from radio import Radio
@@ -42,7 +42,7 @@ def fmt_time(sec):
 
 
 def fmt_date(ts):
-    return lang.date(ts) if ts else ""
+    return i18n.date(ts) if ts else ""
 
 
 def stations(n):
@@ -741,7 +741,7 @@ class Settings(Menu):
         return [("country", _("My country"), st.settings.get("country_name") or _("Not set (choose in Radio > By country)"), None, ""),
                 ("region", _("Podcast charts"), _(dict(PODCAST_REGIONS).get(st.settings.get("podcast_country", "us"), "United States")),
                  None, ""),
-                ("language", _("Language"), lang.label(), None, ""),
+                ("language", _("Language"), i18n.label(), None, ""),
                 ("clear", _("Delete all downloads"), f"{episodes(len(st.downloads()))} · {fmt_mb(size)}", None, ""),
                 ("updates", _("Check for updates"), _("On · a notice when a new version is out") if self.app.updater.enabled
                  else _("Off"), None, ""),
@@ -752,9 +752,9 @@ class Settings(Menu):
 
     def act(self, action, key):
         if key == "language" and action in ("LEFT", "RIGHT", "A"):
-            lang.cycle(-1 if action == "LEFT" else 1)
+            i18n.cycle(-1 if action == "LEFT" else 1)
             if not self.app.screen.language_ok():
-                lang.unavailable()  # no font for it: English
+                i18n.unavailable()  # no font for it: English
         elif action == "A":
             self.choose(key)
 
@@ -877,11 +877,11 @@ class App:
     def __init__(self, app_dir):
         self.app_dir = app_dir
         os.makedirs(os.path.join(app_dir, "logs"), exist_ok=True)
-        lang.setup(app_dir)  # the app's choice, else muOS's language (see lang.py)
+        i18n.setup(app_dir)  # the app's choice, else muOS's language (see i18n.py)
         self.screen = Screen()
         self.screen.app_dir = app_dir
         if not self.screen.language_ok():
-            lang.unavailable()
+            i18n.unavailable()
         self.pad = Pad()
         self.awake = KeepAwake()
         self.store = Store(app_dir)

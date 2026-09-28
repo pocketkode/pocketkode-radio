@@ -7,7 +7,7 @@ import os
 import unicodedata
 
 import font
-import lang
+import i18n
 import sdl
 import ttf
 
@@ -68,7 +68,7 @@ class Screen:
 
     def language_ok(self):
         """False when the current language's font can't be used (then the app switches to English)."""
-        return lang.current() == "en" or self._font(lang.font_file()) is not None
+        return i18n.current() == "en" or self._font(i18n.font_file()) is not None
 
     def _needs(self, s):
         """s has characters the pixel font can't draw (Cyrillic, CJK, Korean…)."""
@@ -76,9 +76,9 @@ class Screen:
 
     def tt(self, s):
         """The Noto renderer for s, or None when s is drawn with the pixel font."""
-        if lang.current() == "en" and not self._needs(s):
+        if i18n.current() == "en" and not self._needs(s):
             return None
-        return self._font(ttf.KOREAN_FONT if any(ttf.is_hangul(ch) for ch in s) else lang.font_file())
+        return self._font(ttf.KOREAN_FONT if any(ttf.is_hangul(ch) for ch in s) else i18n.font_file())
 
     @staticmethod
     def _px(scale):

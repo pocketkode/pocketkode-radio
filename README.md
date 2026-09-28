@@ -131,8 +131,12 @@ fork change `REPO` and `UPDATE_KEY` in `updater.py`, or turn updates off in Sett
 Bug reports, station or podcast problems, translations and pull requests are welcome: open an
 [issue](https://github.com/pocketkode/pocketkode-radio/issues), or email **feedback@pocketkode.com**.
 
-- Every text shown on screen is wrapped in `_("English text")`; translations are in `texts_<code>.py` (the app's own
-  texts) and `lang_common.py` (updates and network messages). A missing translation stays English.
+- Every text shown on screen is wrapped in `_("English text")` in the code. The translations are in
+  `lang/<code>.json` (`ja`, `es`, `fr`, `de`, `nl`, `ru`, `zh`, `ko`): `"texts"` maps each English text to its
+  translation, and `"patterns"` translates messages with a number or name in them. Keep the `{placeholders}` as
+  they are. A text that isn't translated shows in English; `./build.sh` lists them.
+- To add a language, copy an existing file to `lang/<code>.json`, translate the values, and add the code to `LANGS`,
+  `NAMES` and `_MUOS` in `i18n.py`.
 - Please test on a handheld before sending a pull request, and say which device and muOS version you used.
 
 ## Third-party
