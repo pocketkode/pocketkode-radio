@@ -255,7 +255,7 @@ class Home(Menu):
         p = self.app.player
         if p.item:
             out.append(("now", _("Now playing"), p.item.get("title", ""), C["accent_hi"], "▶" if p.active else ""))
-            out.append(("screenoff", _("Turn off the screen"), _("Keeps playing · press MENU to turn it back on"), None, ""))
+            out.append(("screenoff", _("Turn off the screen"), _("Keeps playing · press START or MENU to turn it back on"), None, ""))
         subs = len(self.app.store.d["subs"])
         u = self.app.updater
         if u.state in ("available", "downloading", "ready") and u.info:
@@ -629,14 +629,14 @@ class NowPlaying(View):
             a.store.changed()
         elif action == "Y":
             a.cycle_sleep()
-        elif action == "SELECT":
-            a.set_screen(False)
-        elif action == "START" and ep and item.get("ep"):  # download the episode that's playing
+        elif action == "START":
+            a.set_screen(False)  # START (or MENU) turns it back on
+        elif action == "SELECT" and ep and item.get("ep"):  # download the episode that's playing
             state = a.downloads.state(item["key"])
             if state in (None, "error"):
                 a.downloads.add(item["ep"], item.get("show") or {})
                 a.toast(_("Downloading…"))
-        elif action == "START" and item.get("kind") == "station":
+        elif action == "SELECT" and item.get("kind") == "station":
             a.store.toggle_fav(item["station"])
 
     def draw(self, s):
@@ -684,10 +684,10 @@ class NowPlaying(View):
             s.text(W - 24, 76, _("Sound is off: press VOL+"), 2, C["warn"], align="right")
         elif vol.level is not None:
             s.text(W - 24, 76, _("Volume {n}%", n=vol.level), 2, C["dim"], align="right")
-        keys = [("A", _("Pause")), ("X", _("Stop")), ("Y", _("Sleep")), ("SELECT", _("Screen off (MENU wakes)"))]
+        a_key = ("A", _("Pause") if p.active and not p.prop("pause") else _("Play"))  # what A does now
+        keys = [a_key, ("X", _("Stop")), ("Y", _("Sleep")), ("START", _("Screen off"))]
         if ep:
-            keys = [("A", _("Pause")), ("←→", "-15/+30s"), ("L1 R1", _("Speed")), ("Y", _("Sleep")),
-                    ("SELECT", _("Screen off (MENU wakes)"))]
+            keys = [a_key, ("←→", "-15/+30s"), ("L1 R1", _("Speed")), ("Y", _("Sleep")), ("START", _("Screen off"))]
             state = a.downloads.state(item.get("key"))
             if state == "loading":
                 d, t = a.downloads.progress.get(item["key"], (0, 0))
@@ -695,9 +695,9 @@ class NowPlaying(View):
             elif state == "queued":
                 keys.insert(1, ("↓", _("Downloading…")))
             elif state in (None, "error") and item.get("ep"):
-                keys.insert(1, ("START", _("Download")))
+                keys.insert(1, ("SELECT", _("Download")))
         else:
-            keys.insert(2, ("START", _("Favourite")))
+            keys.insert(2, ("SELECT", _("Favourite")))
         lines, line = [], ""
         for k, v in keys:  # as many hints per line as fit (translations can be longer)
             part = f"{k} {v}"
@@ -1013,8 +1013,8 @@ class App:
     # loop
     def dispatch(self, action):
         if not self.screen_on:
-            if action == "MENU":
-                self.set_screen(True)  # only MENU wakes the screen (a button pressed in a bag or pocket doesn't)
+            if action in ("START", "MENU"):
+                self.set_screen(True)  # only these wake the screen (other buttons pressed in a bag or pocket don't)
             return
         if action == "MENU" and self.player.item and not isinstance(self.stack[-1], NowPlaying):
             self.push(NowPlaying(self))

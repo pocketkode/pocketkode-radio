@@ -30,19 +30,19 @@ Thousands of stations from around the world, from the community-run [Radio Brows
 - **Search** or browse **Top podcasts** (Apple's public charts; choose the country in Settings).
 - Press **Y** to **subscribe**; your shows are in **My podcasts**.
 - In a show's episode list: **A** play, **X** download (again to cancel, or to delete a download), **Y** mark as played, **START** subscribe.
-- While an episode plays (**Now playing**), **START** downloads it; the progress shows on the screen.
+- While an episode plays (**Now playing**), **SELECT** downloads it; the progress shows on the screen.
 - **Downloads** play without Wi-Fi. Where you stopped is remembered for every episode.
 
 ## Now playing
 
 | Button | Radio | Podcast |
 |---|---|---|
-| A | Pause / play | Pause / play |
+| A | Play / pause | Play / pause |
 | ◀ / ▶ | | Back 15 s / forward 30 s |
 | L1 / R1 | | Slower / faster (0.75x to 2x) |
-| START | Favourite | |
+| SELECT | Favourite | Download the episode |
 | Y | Sleep timer (15, 30, 45, 60, 90 min, off) | Sleep timer |
-| SELECT | **Screen off** (only **MENU** turns it back on, so a button pressed in a bag doesn't) | Screen off |
+| START | **Screen off**; **START** or **MENU** turns it back on (other buttons don't, so one pressed in a bag doesn't) | Screen off |
 | X | Stop | Stop |
 | B | Back; keeps playing | Back; keeps playing |
 
