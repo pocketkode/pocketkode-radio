@@ -1,0 +1,17 @@
+# Build output (package, staging)
+dist/
+
+# Python
+__pycache__/
+*.pyc
+*.so
+
+# Created on the handheld / when testing
+logs/
+data/
+
+# macOS
+.DS_Store
+
+# Release files (published on GitHub and pocketkode.com, not in the repo)
+release/
