@@ -19,7 +19,7 @@ class Store:
         os.makedirs(self.dl_dir, exist_ok=True)
         self.path = os.path.join(self.dir, "state.json")
         self.d = {"favourites": [], "recent": [], "subs": {}, "eps": {},
-                  "settings": {"country": "", "podcast_country": "us", "volume": 80}}
+                  "settings": {"country": "", "podcast_country": "us"}}
         try:
             with open(self.path) as f:
                 saved = json.load(f)
@@ -28,6 +28,7 @@ class Store:
                     self.d[k] = saved[k] if k != "settings" else {**self.d[k], **saved[k]}
         except (OSError, ValueError):
             pass
+        self.d["settings"].pop("volume", None)  # before 1.3.0 the app had its own volume; now it's the handheld's
         self.dirty = False
         self._last_save = 0.0
         for key, e in list(self.d["eps"].items()):  # forget downloads whose file is gone

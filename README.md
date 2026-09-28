@@ -40,12 +40,14 @@ Thousands of stations from around the world, from the community-run [Radio Brows
 | A | Pause / play | Pause / play |
 | ◀ / ▶ | | Back 15 s / forward 30 s |
 | L1 / R1 | | Slower / faster (0.75x to 2x) |
-| ▲ / ▼ | Volume | Volume |
 | START | Favourite | |
 | Y | Sleep timer (15, 30, 45, 60, 90 min, off) | Sleep timer |
 | SELECT | **Screen off** (only **MENU** turns it back on, so a button pressed in a bag doesn't) | Screen off |
 | X | Stop | Stop |
 | B | Back; keeps playing | Back; keeps playing |
+
+**Volume:** use the handheld's **VOL+ / VOL−** buttons. Now playing shows the handheld's volume, and says so
+when the sound is off.
 
 While something plays, a bar at the bottom of every screen shows it; press **MENU** to open Now playing.
 

@@ -20,6 +20,7 @@ from .player import Player
 from .radio import Radio
 from .store import Downloads, Store
 from .update_screen import UpdateScreen
+from .volume import HandheldVolume
 
 APP_VERSION = "1.3.0"
 ROW_H = 58
@@ -599,6 +600,9 @@ class NowPlaying(View):
         left = self.app.sleep_left()
         return _("Sleep in {t}", t=fmt_time(left)) if left else ""
 
+    def update(self):
+        self.app.volume.poll()
+
     def handle(self, action):
         a, p = self.app, self.app.player
         item = p.item or {}
@@ -612,10 +616,6 @@ class NowPlaying(View):
                 a.replay()
         elif action == "X":
             a.stop_playback()
-        elif action == "UP":
-            p.add_volume(5)
-        elif action == "DOWN":
-            p.add_volume(-5)
         elif action == "LEFT" and ep:
             p.seek(-15)
         elif action == "RIGHT" and ep:
@@ -679,10 +679,12 @@ class NowPlaying(View):
             s.text(24, 318, f"{status}" + (f" · {fmt_time(pos)}" if pos else ""), 2, C["accent_hi"])
             if item.get("station") and a.store.is_fav(item["station"]):
                 s.text(W - 24, 318, _("★ favourite"), 2, C["accent_hi"], align="right")
-        vol = p.prop("volume")
-        if vol is not None:
-            s.text(W - 24, 76, _("Volume {n}%", n=int(vol)), 2, C["dim"], align="right")
-        keys = [("A", _("Pause")), ("X", _("Stop")), ("↑↓", _("Volume")), ("Y", _("Sleep")), ("SELECT", _("Screen off (MENU wakes)"))]
+        vol = a.volume  # the handheld's own volume (VOL+ / VOL-); the player itself always plays at 100%
+        if vol.off:
+            s.text(W - 24, 76, _("Sound is off: press VOL+"), 2, C["warn"], align="right")
+        elif vol.level is not None:
+            s.text(W - 24, 76, _("Volume {n}%", n=vol.level), 2, C["dim"], align="right")
+        keys = [("A", _("Pause")), ("X", _("Stop")), ("Y", _("Sleep")), ("SELECT", _("Screen off (MENU wakes)"))]
         if ep:
             keys = [("A", _("Pause")), ("←→", "-15/+30s"), ("L1 R1", _("Speed")), ("Y", _("Sleep")),
                     ("SELECT", _("Screen off (MENU wakes)"))]
@@ -888,6 +890,7 @@ class App:
         self.radio = Radio()
         self.player = Player(os.path.join(app_dir, "logs"))
         self.downloads = Downloads(self.store)
+        self.volume = HandheldVolume()
         self.downloads.start()
         _forget_licence(app_dir)
         self.stack = [Home(self)]
@@ -945,8 +948,7 @@ class App:
 
     def _play(self, url, item, start=0):
         self.last_url = (url, item)
-        self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0),
-                         volume=self.store.settings.get("volume", 80))
+        self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0))
         self.awake.start()
 
     def replay(self):
@@ -955,8 +957,7 @@ class App:
             start = 0
             if item.get("kind") == "episode":
                 start = (self.store.peek(item["key"]) or {}).get("pos", 0)
-            self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0),
-                             volume=self.store.settings.get("volume", 80))
+            self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0))
             self.awake.start()
 
     def stop_playback(self):
@@ -971,10 +972,6 @@ class App:
         if not item or not p.active or (not force and now - self._last_pos_save < 5):
             return
         self._last_pos_save = now
-        vol = p.prop("volume")
-        if vol is not None and int(vol) != self.store.settings.get("volume"):
-            self.store.settings["volume"] = int(vol)
-            self.store.changed()
         if item.get("kind") != "episode":
             return
         e = self.store.peek(item["key"])

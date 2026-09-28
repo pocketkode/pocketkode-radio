@@ -9,7 +9,7 @@ import subprocess
 import time
 
 SOCK = "/tmp/pkradio-mpv.sock"
-PROPS = ("time-pos", "duration", "pause", "speed", "volume", "metadata", "core-idle", "paused-for-cache")
+PROPS = ("time-pos", "duration", "pause", "speed", "metadata", "core-idle", "paused-for-cache")
 
 
 class MpvIPC:
@@ -104,7 +104,7 @@ class Player:
     def active(self):
         return self.proc is not None and self.proc.poll() is None
 
-    def play(self, url, item, start=0, speed=1.0, volume=80):
+    def play(self, url, item, start=0, speed=1.0):
         self.stop(forget=False)
         mpv = find_mpv()
         if not mpv:
@@ -114,16 +114,18 @@ class Player:
             os.remove(SOCK)
         except OSError:
             pass
-        args = [mpv, "--no-config", "--no-video", "--idle=no", "--terminal=no",
+        # warnings and errors, plus the lines that say what's played and which sound output is used, go to mpv.log
+        args = [mpv, "--no-config", "--no-video", "--idle=no", "--term-status-msg=",
                 f"--input-ipc-server={SOCK}", f"--force-media-title={item.get('title', '')}",
-                f"--volume={int(volume)}", "--cache=yes", "--network-timeout=20",
-                "--msg-level=all=warn", "--user-agent=PocketKodeRadio/1.3"]
+                "--volume=100", "--cache=yes", "--network-timeout=20",
+                "--msg-level=all=warn,cplayer=info", "--user-agent=PocketKodeRadio/1.3"]
         if item.get("kind") == "episode":
             args.append(f"--speed={speed:.2f}")
             if start > 5:
                 args.append(f"--start={int(start)}")
         args.append(url)
-        log = open(os.path.join(self.log_dir, "mpv.log"), "a")
+        log = open(os.path.join(self.log_dir, "mpv.log"), "w")  # only the latest playback
+        print(f"[player] {item.get('kind')}: {url}", flush=True)
         try:
             self.proc = subprocess.Popen(args, stdin=subprocess.DEVNULL, stdout=log, stderr=log)
         except OSError as e:
@@ -147,6 +149,7 @@ class Player:
             for p in PROPS:
                 self.ipc.query(p)
         if self.proc and self.proc.poll() is not None and self.item:
+            print(f"[player] mpv stopped (exit code {self.proc.returncode})", flush=True)
             if self.proc.returncode not in (0, None) and now - self.started < 20 and not self.prop("time-pos"):
                 self.error = "This couldn't be played. The station or episode may be offline."
             self.proc = None
@@ -172,9 +175,6 @@ class Player:
 
     def set_speed(self, speed):
         self.cmd("set_property", "speed", speed)
-
-    def add_volume(self, step):
-        self.cmd("add", "volume", step)
 
     def stop(self, forget=True):
         """Stop playback. forget=False keeps self.item (e.g. to show what just ended)."""
