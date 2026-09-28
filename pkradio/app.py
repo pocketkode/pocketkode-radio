@@ -255,7 +255,7 @@ class Home(Menu):
         p = self.app.player
         if p.item:
             out.append(("now", _("Now playing"), p.item.get("title", ""), C["accent_hi"], "▶" if p.active else ""))
-            out.append(("screenoff", _("Turn off the screen"), _("Keeps playing · press START or MENU to turn it back on"), None, ""))
+            out.append(("screenoff", _("Turn off the screen"), _("Keeps playing · START or MENU turns it on"), None, ""))
         subs = len(self.app.store.d["subs"])
         u = self.app.updater
         if u.state in ("available", "downloading", "ready") and u.info:
