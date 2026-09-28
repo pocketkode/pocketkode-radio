@@ -24,7 +24,7 @@ import zipfile
 import ed25519
 import net
 
-REPO = "mahamudul87/pocketkode-radio"
+REPO = "pocketkode/pocketkode-radio"
 LATEST = f"https://github.com/{REPO}/releases/latest/download/update.json"
 # PocketKode's update signing key (public half): only packages signed with its private half are installed.
 UPDATE_KEY = bytes.fromhex("fe76ade7218a09311dab9263a462555e1c7f58cd1d6003f79d2a87f77e49a2af")

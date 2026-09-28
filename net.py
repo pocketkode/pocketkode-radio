@@ -9,7 +9,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-USER_AGENT = "PocketKodeRadio/1.3 (+https://github.com/mahamudul87/pocketkode-radio)"
+USER_AGENT = "PocketKodeRadio/1.3 (+https://github.com/pocketkode/pocketkode-radio)"
 
 
 class NetError(Exception):

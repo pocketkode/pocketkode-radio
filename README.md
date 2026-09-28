@@ -5,9 +5,14 @@
 
 Tested on the Anbernic RG40XXH with muOS 2601.0 Jacaranda. Other muOS devices with Wi-Fi may work: reports are welcome.
 
+| | |
+|---|---|
+| ![Home screen](screenshots/home.png) | ![Radio menu](screenshots/radio.png) |
+| ![Top stations](screenshots/top-stations.png) | ![Now playing](screenshots/now-playing.png) |
+
 ## Install
 
-Download `PocketKodeRadio-<version>.muxapp` from the [latest release](https://github.com/mahamudul87/pocketkode-radio/releases/latest),
+Download `PocketKodeRadio-<version>.muxapp` from the [latest release](https://github.com/pocketkode/pocketkode-radio/releases/latest),
 copy it to the `ARCHIVE` folder on SD card 1, then open **Applications → Archive Manager** and install it. Turn on
 **Wi-Fi**, then open **Applications → PocketKode Radio**.
 
@@ -95,24 +100,36 @@ updated version doesn't start, the app goes back to the previous one by itself. 
 
 ## Building
 
-Needs bash, zip, unzip, curl, shasum and Python 3.
+Needs bash, zip, unzip, curl, shasum and Python 3 (macOS or Linux).
 
 ```sh
+git clone https://github.com/pocketkode/pocketkode-radio.git
+cd pocketkode-radio
 ./build.sh
 ```
 
-This makes `dist/PocketKodeRadio.muxapp`. The app is plain Python 3 and uses the Python, SDL2, SDL2_ttf and mpv that
-come with muOS; the build only adds the Noto fonts (downloaded and checked against their SHA-256). To try a change
-quickly, copy the source files over the installed app in `/mnt/mmc/MUOS/application/PocketKodeRadio/` and start it
-again.
+This makes `dist/PocketKodeRadio.muxapp`, the package you install with Archive Manager. The app is plain Python 3
+and uses the Python, SDL2, SDL2_ttf and mpv that come with muOS; the build only adds the Noto fonts (downloaded once
+and checked against their SHA-256). `dist/stage/PocketKodeRadio/` holds the same files unpacked.
+
+## Running
+
+The app runs on the handheld (it reads the buttons from the Linux input device and plays through muOS's mpv).
+
+- **Install the package:** copy `dist/PocketKodeRadio.muxapp` to `ARCHIVE` on SD card 1 and install it with
+  **Applications → Archive Manager**. Close the app first if it's open.
+- **Try a change quickly:** copy the changed `.py` files over the installed app in
+  `/mnt/mmc/MUOS/application/PocketKodeRadio/` (for example with muOS's SFTP: **Configuration → Web Services**),
+  then start **PocketKode Radio** again. Your stations and settings in `data/` are kept.
+- **Logs:** `logs/app.log` (the app) and `logs/mpv.log` (the player) in the app folder.
 
 A build of your own can't install PocketKode's updates over itself unless it's signed with PocketKode's key, so for a
-fork change `REPO` and `UPDATE_KEY` in `updater.py`, or turn updates off.
+fork change `REPO` and `UPDATE_KEY` in `updater.py`, or turn updates off in Settings.
 
 ## Contributing
 
 Bug reports, station or podcast problems, translations and pull requests are welcome: open an
-[issue](https://github.com/mahamudul87/pocketkode-radio/issues), or email **feedback@pocketkode.com**.
+[issue](https://github.com/pocketkode/pocketkode-radio/issues), or email **feedback@pocketkode.com**.
 
 - Every text shown on screen is wrapped in `_("English text")`; translations are in `texts_<code>.py` (the app's own
   texts) and `lang_common.py` (updates and network messages). A missing translation stays English.
