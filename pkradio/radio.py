@@ -3,7 +3,7 @@
 """Internet radio stations from the public Radio Browser directory (radio-browser.info)."""
 import random
 
-import net
+from . import net
 
 FALLBACK_SERVERS = ["https://de1.api.radio-browser.info", "https://de2.api.radio-browser.info",
                     "https://fi1.api.radio-browser.info", "https://nl1.api.radio-browser.info"]

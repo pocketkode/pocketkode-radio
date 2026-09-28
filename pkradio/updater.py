@@ -21,8 +21,8 @@ import urllib.error
 import urllib.request
 import zipfile
 
-import ed25519
-import net
+from . import ed25519
+from . import net
 
 REPO = "pocketkode/pocketkode-radio"
 LATEST = f"https://github.com/{REPO}/releases/latest/download/update.json"

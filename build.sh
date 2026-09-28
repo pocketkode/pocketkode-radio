@@ -46,8 +46,9 @@ done
 
 echo "==> Assembling app folder"
 rm -rf "$DIST/stage"
-mkdir -p "$STAGE/glyph" "$STAGE/lang"
-cp "$SRC"/*.py "$SRC/mux_launch.sh" "$SRC/README.md" "$SRC/LICENSE" "$STAGE/"
+mkdir -p "$STAGE/glyph" "$STAGE/lang" "$STAGE/pkradio"
+cp "$SRC/main.py" "$SRC/mux_launch.sh" "$SRC/mux_lang.ini" "$SRC/README.md" "$SRC/LICENSE" "$STAGE/"
+cp "$SRC"/pkradio/*.py "$STAGE/pkradio/"
 cp "$SRC"/lang/*.json "$STAGE/lang/"
 cp "$SRC"/glyph/* "$STAGE/glyph/"
 mkdir -p "$STAGE/fonts" "$STAGE/licenses"
@@ -63,7 +64,7 @@ echo "==> Checking Python syntax and translations"
 python3 - "$STAGE" <<'EOF'
 import ast, json, pathlib, sys
 app = pathlib.Path(sys.argv[1])
-for p in app.glob("*.py"):
+for p in app.glob("**/*.py"):
     ast.parse(p.read_text(), str(p))
 langs = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(app.glob("lang/*.json"))}
 every = set().union(*(d["texts"] for d in langs.values()))

@@ -1,5 +1,5 @@
 #!/bin/sh
-# HELP: Internet radio and podcasts
+# HELP: Internet radio and podcasts, with the screen off to save battery
 # ICON: pocketkoderadio
 # GRID: PocketKode Radio
 # SPDX-License-Identifier: MIT

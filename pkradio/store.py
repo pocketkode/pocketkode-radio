@@ -7,7 +7,7 @@ import os
 import threading
 import time
 
-import net
+from . import net
 
 RECENT_MAX = 15
 

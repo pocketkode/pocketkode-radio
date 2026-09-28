@@ -8,7 +8,7 @@ import html
 import re
 import xml.etree.ElementTree as ET
 
-import net
+from . import net
 
 ITUNES = "http://www.itunes.com/dtds/podcast-1.0.dtd"
 

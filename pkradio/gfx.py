@@ -6,10 +6,10 @@ import ctypes
 import os
 import unicodedata
 
-import font
-import i18n
-import sdl
-import ttf
+from . import font
+from . import i18n
+from . import sdl
+from . import ttf
 
 W, H = 640, 480
 

@@ -8,7 +8,7 @@ import ctypes.util
 import os
 from collections import OrderedDict
 
-import sdl
+from . import sdl
 
 _CANDIDATES = [
     os.environ.get("PKR_SDL2_TTF_LIB", ""),

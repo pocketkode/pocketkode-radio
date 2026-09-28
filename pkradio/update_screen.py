@@ -3,8 +3,8 @@
 """The update screen: what's new, download, restart to finish."""
 import time
 
-from gfx import C, W
-from i18n import _, tr
+from .gfx import C, W
+from .i18n import _, tr
 
 
 class UpdateScreen:

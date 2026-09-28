@@ -68,7 +68,7 @@ def _apply():
         _load(code)
 
 
-LANG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lang")
+LANG_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "lang")  # next to main.py
 
 
 def _load(code):

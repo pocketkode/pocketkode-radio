@@ -7,19 +7,19 @@ import subprocess
 import threading
 import time
 
-import i18n
-import net
-import podcasts
-import sdl
-import updater
-from gfx import C, H, W, Screen
-from keepawake import KeepAwake
-from i18n import _, tr
-from pad import Pad
-from player import Player
-from radio import Radio
-from store import Downloads, Store
-from update_screen import UpdateScreen
+from . import i18n
+from . import net
+from . import podcasts
+from . import sdl
+from . import updater
+from .gfx import C, H, W, Screen
+from .keepawake import KeepAwake
+from .i18n import _, tr
+from .pad import Pad
+from .player import Player
+from .radio import Radio
+from .store import Downloads, Store
+from .update_screen import UpdateScreen
 
 APP_VERSION = "1.3.0"
 ROW_H = 58

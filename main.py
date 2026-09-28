@@ -73,7 +73,7 @@ def drop_compiled(app_dir):
     """Versions before 1.3.0 were compiled (app.so, lang.so…). Python loads a .so before a .py of the same name, so
     after installing this version over one of them the old files must go. Right after an in-app update they're kept
     in .update/prev with the other replaced files, so switching back to the previous version still works."""
-    if not os.path.exists(os.path.join(app_dir, "app.py")):  # switched back to a compiled version: keep it
+    if not os.path.exists(os.path.join(app_dir, "pkradio", "app.py")):  # switched back to a compiled version: keep it
         return
     old = [f for f in os.listdir(app_dir) if f.endswith(".so")]
     if not old:
@@ -106,7 +106,10 @@ apply_update(APP_DIR)  # before any of the app's modules are loaded
 drop_compiled(APP_DIR)
 sys.path.insert(0, APP_DIR)
 
-from app import App  # noqa: E402
+if os.path.exists(os.path.join(APP_DIR, "pkradio", "app.py")):
+    from pkradio.app import App  # noqa: E402
+else:  # just switched back to a version before 1.3.0 (compiled, in the app folder itself)
+    from app import App  # noqa: E402
 
 
 def main():

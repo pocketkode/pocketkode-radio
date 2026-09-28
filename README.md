@@ -118,13 +118,28 @@ The app runs on the handheld (it reads the buttons from the Linux input device a
 
 - **Install the package:** copy `dist/PocketKodeRadio.muxapp` to `ARCHIVE` on SD card 1 and install it with
   **Applications → Archive Manager**. Close the app first if it's open.
-- **Try a change quickly:** copy the changed `.py` files over the installed app in
-  `/mnt/mmc/MUOS/application/PocketKodeRadio/` (for example with muOS's SFTP: **Configuration → Web Services**),
-  then start **PocketKode Radio** again. Your stations and settings in `data/` are kept.
+- **Try a change quickly:** copy the changed files over the installed app in `MUOS/application/PocketKodeRadio/` on
+  SD card 1 (for example with muOS's SFTP: **Configuration → Web Services**), then start **PocketKode Radio** again.
+  Your stations and settings in `data/` are kept.
 - **Logs:** `logs/app.log` (the app) and `logs/mpv.log` (the player) in the app folder.
 
 A build of your own can't install PocketKode's updates over itself unless it's signed with PocketKode's key, so for a
 fork change `REPO` and `UPDATE_KEY` in `updater.py`, or turn updates off in Settings.
+
+## Project layout
+
+The app folder follows the layout of muOS's own applications:
+
+| Path | What it is |
+|---|---|
+| `mux_launch.sh` | The launcher muOS runs (its `HELP`, `ICON` and `GRID` lines name the app) |
+| `mux_lang.ini` | The app's name and help text in the muOS languages |
+| `glyph/` | The app icon |
+| `main.py` | Starts the app (and finishes a downloaded update first) |
+| `pkradio/` | The app itself: screens (`app.py`), drawing (`gfx.py`, `font.py`, `ttf.py`, `sdl.py`), buttons (`pad.py`), playback (`player.py`), Radio Browser (`radio.py`), podcasts (`podcasts.py`), saved state (`store.py`), updates (`updater.py`, `update_screen.py`) |
+| `lang/` | Translations, one JSON file per language |
+| `fonts/`, `licenses/` | The Noto fonts and their licences (added by `build.sh`) |
+| `data/`, `logs/` | Made on the handheld: your stations and settings, and the logs |
 
 ## Contributing
 
@@ -136,7 +151,7 @@ Bug reports, station or podcast problems, translations and pull requests are wel
   translation, and `"patterns"` translates messages with a number or name in them. Keep the `{placeholders}` as
   they are. A text that isn't translated shows in English; `./build.sh` lists them.
 - To add a language, copy an existing file to `lang/<code>.json`, translate the values, and add the code to `LANGS`,
-  `NAMES` and `_MUOS` in `i18n.py`.
+  `NAMES` and `_MUOS` in `pkradio/i18n.py`, and the name and help text to `mux_lang.ini`.
 - Please test on a handheld before sending a pull request, and say which device and muOS version you used.
 
 ## Third-party
