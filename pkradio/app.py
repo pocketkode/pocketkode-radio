@@ -666,7 +666,7 @@ class NowPlaying(View):
             if song:
                 s.text(24, y, _("On air:"), 2, C["faint"])
                 s.para(24, y + 24, song, W - 48, 2, C["text"])
-        status = _("Stopped") if not p.active else _("Paused") if p.prop("pause") else \
+        status = _("Loading…") if p.connecting else _("Stopped") if not p.active else _("Paused") if p.prop("pause") else \
             _("Loading…") if p.prop("paused-for-cache") or p.prop("time-pos") is None else _("Playing")
         pos, dur = p.prop("time-pos", 0) or 0, p.prop("duration", 0) or 0
         if ep:
@@ -890,6 +890,7 @@ class App:
         self.radio = Radio()
         self.player = Player(os.path.join(app_dir, "logs"))
         self.downloads = Downloads(self.store)
+        self._resolving = self._resolved = self._play_after_dl = None  # see _play and _after_player
         self.volume = HandheldVolume()
         self.downloads.start()
         _forget_licence(app_dir)
@@ -943,13 +944,50 @@ class App:
             e["played"], e["pos"] = False, 0
         src = e["file"] if e.get("file") and os.path.exists(e["file"]) else ep["url"]
         item = {"kind": "episode", "title": ep["title"], "key": ep["key"], "ep": ep, "show": show,
+                "streamed": src == ep["url"],
                 "sub": show.get("title", "") + (" · downloaded" if src != ep["url"] else " · streaming")}  # translated when drawn
         self._play(src, item, start=e.get("pos", 0))
 
     def _play(self, url, item, start=0):
         self.last_url = (url, item)
+        self._play_after_dl = None
+        if item.get("streamed"):
+            # follow the episode's ad-tracking redirects first (in the background), then play the final address
+            self.player.stop(forget=False)
+            self.player.item, self.player.error, self.player.connecting = item, None, True
+            token = self._resolving = object()
+
+            def resolve():
+                self._resolved = (token, net.final_url(url), item, start)
+            threading.Thread(target=resolve, daemon=True).start()
+            return
         self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0))
         self.awake.start()
+
+    def _after_player(self):
+        """Starts a resolved episode; if streaming an episode fails, downloads it and plays the file."""
+        got, self._resolved = self._resolved, None
+        if got and got[0] is self._resolving:
+            _t, url, item, start = got
+            self._resolving = None
+            self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0))
+            self.awake.start()
+        p = self.player
+        item = p.item or {}
+        if p.error and item.get("streamed") and not item.get("fallback") and item.get("ep"):
+            item["fallback"] = True
+            self.downloads.add(item["ep"], item.get("show") or {})
+            self._play_after_dl = item
+            p.error = "Streaming didn't work. Downloading the episode to play it…"
+        wait = self._play_after_dl
+        if wait:
+            state = self.downloads.state(wait["key"])
+            if state == "done":
+                self._play_after_dl = None
+                self.play_episode(wait["ep"], wait.get("show") or {})
+            elif state == "error":
+                self._play_after_dl = None
+                p.error = self.downloads.errors.get(wait["key"]) or "This couldn't be played. The station or episode may be offline."
 
     def replay(self):
         if self.last_url:
@@ -957,8 +995,7 @@ class App:
             start = 0
             if item.get("kind") == "episode":
                 start = (self.store.peek(item["key"]) or {}).get("pos", 0)
-            self.player.play(url, item, start=start, speed=self.store.settings.get("speed", 1.0))
-            self.awake.start()
+            self._play(url, item, start=start)
 
     def stop_playback(self):
         self._save_position(force=True)
@@ -1028,6 +1065,7 @@ class App:
         for action in self.pad.poll():
             self.dispatch(action)
         self.player.poll()
+        self._after_player()
         self._save_position()
         if self.player.item and not self.player.active and self.awake.active:
             self._save_position(force=True)

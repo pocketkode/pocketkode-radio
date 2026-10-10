@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "ラジオ局のディレクトリを利用できません。",
     "mpv isn't installed on this system.": "このシステムには mpv がインストールされていません。",
     "This couldn't be played. The station or episode may be offline.": "再生できませんでした。ラジオ局かエピソードがオフラインの可能性があります。",
+    "Streaming didn't work. Downloading the episode to play it…": "ストリーミングできませんでした。エピソードをダウンロードして再生します…",
     "This podcast's feed couldn't be read.": "このポッドキャストのフィードを読み取れませんでした。",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "アップデートのために GitHub の最新リリースを読み込みます（設定でオフにできます）。インストールを選んだアップデートは pocketkode.com からダウンロードします。あなたや携帯ゲーム機についての情報は何も送りません。"
   },

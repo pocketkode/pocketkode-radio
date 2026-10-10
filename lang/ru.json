@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "Каталог радиостанций недоступен.",
     "mpv isn't installed on this system.": "В этой системе не установлен mpv.",
     "This couldn't be played. The station or episode may be offline.": "Не удалось воспроизвести. Возможно, станция или выпуск недоступны.",
+    "Streaming didn't work. Downloading the episode to play it…": "Потоковое воспроизведение не удалось. Скачиваем выпуск, чтобы воспроизвести его…",
     "This podcast's feed couldn't be read.": "Не удалось прочитать ленту этого подкаста.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "Для обновлений приложение читает последний выпуск на GitHub (это можно выключить в настройках); обновление, которое вы решили установить, загружается с pocketkode.com. Оно ничего не отправляет о вас или о консоли."
   },

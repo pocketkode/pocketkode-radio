@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "방송국 디렉터리를 사용할 수 없습니다.",
     "mpv isn't installed on this system.": "이 시스템에는 mpv가 설치되어 있지 않습니다.",
     "This couldn't be played. The station or episode may be offline.": "재생할 수 없습니다. 방송국이나 에피소드가 오프라인일 수 있습니다.",
+    "Streaming didn't work. Downloading the episode to play it…": "스트리밍이 되지 않았습니다. 에피소드를 다운로드해서 재생합니다…",
     "This podcast's feed couldn't be read.": "이 팟캐스트의 피드를 읽지 못했습니다.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "업데이트를 위해 GitHub의 최신 릴리스를 확인합니다(설정에서 끌 수 있습니다). 설치하기로 한 업데이트는 pocketkode.com에서 내려받습니다. 사용자나 기기에 관한 정보는 아무것도 보내지 않습니다."
   },

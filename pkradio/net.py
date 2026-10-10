@@ -54,6 +54,16 @@ def get_bytes(url, timeout=20, limit=16 << 20):
     return data
 
 
+def final_url(url, timeout=15):
+    """Where url ends up after its redirects. Big podcasts send each episode through several ad-tracking
+    servers; following them here means the player only has to open the final address. The url itself if that fails."""
+    try:
+        with open_url(url, timeout, {"Range": "bytes=0-0"}) as r:  # just the headers, not the episode
+            return r.geturl() or url
+    except NetError:
+        return url
+
+
 def get_json(url, params=None, timeout=20):
     if params:
         url += ("&" if "?" in url else "?") + urllib.parse.urlencode(params)

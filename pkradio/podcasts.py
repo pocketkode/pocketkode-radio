@@ -61,22 +61,45 @@ def episode_key(show_feed, guid):
     return hashlib.sha1(f"{show_feed}|{guid}".encode()).hexdigest()[:16]
 
 
-def feed(url):
-    """(show dict, [episode dicts]) newest first."""
-    data = net.get_bytes(url, timeout=25)
-    try:
-        root = ET.fromstring(data)
-    except ET.ParseError as e:
-        raise net.NetError("This podcast's feed couldn't be read.") from e
-    ch = root.find("channel")
-    if ch is None:
+def _read_feed(url, max_items, limit=16 << 20):
+    """(channel element, finished <item> elements). Reads the feed as it arrives and stops after max_items
+    episodes: big shows have over a thousand, several MB that a handheld would download and parse for a minute."""
+    parser = ET.XMLPullParser(events=("start", "end"))
+    channel, items, total = None, [], 0
+    with net.open_url(url, 25) as r:
+        while len(items) < max_items:
+            try:
+                chunk = r.read(64 << 10)
+            except (OSError, ValueError) as e:
+                raise net.NetError(net.friendly(e)) from e
+            if not chunk:
+                break
+            total += len(chunk)
+            if total > limit:
+                raise net.NetError("That feed is too large to load.")
+            try:
+                parser.feed(chunk)
+                for event, el in parser.read_events():
+                    if event == "start" and el.tag == "channel" and channel is None:
+                        channel = el
+                    elif event == "end" and el.tag == "item" and len(items) < max_items:
+                        items.append(el)
+            except ET.ParseError as e:
+                raise net.NetError("This podcast's feed couldn't be read.") from e
+    if channel is None:
         raise net.NetError("This podcast's feed couldn't be read.")
+    return channel, items
+
+
+def feed(url, max_items=100):
+    """(show dict, [episode dicts]) newest first: the first max_items episodes in the feed (feeds list the newest first)."""
+    ch, items = _read_feed(url, max_items)
     ns = {"itunes": ITUNES}
     show = {"feed": url, "title": _text(ch, "title") or "Podcast",
             "author": _text(ch, "itunes:author", ns) or _text(ch, "managingEditor"),
             "about": _clean(_text(ch, "description"))[:600]}
     eps = []
-    for it in ch.findall("item"):
+    for it in items:
         enc = it.find("enclosure")
         if enc is None or not enc.get("url"):
             continue

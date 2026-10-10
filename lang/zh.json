@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "电台目录不可用。",
     "mpv isn't installed on this system.": "此系统没有安装 mpv。",
     "This couldn't be played. The station or episode may be offline.": "无法播放。电台或单集可能已下线。",
+    "Streaming didn't work. Downloading the episode to play it…": "无法在线播放。正在下载这一集以便播放…",
     "This podcast's feed couldn't be read.": "无法读取该播客的订阅源。",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "为了更新，它会读取 GitHub 上的最新版本（可在设置中关闭）；你选择安装的更新从 pocketkode.com 下载。它不会发送任何关于你或掌机的信息。"
   },

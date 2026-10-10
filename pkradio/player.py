@@ -98,6 +98,7 @@ class Player:
         self.started = 0.0
         self._last_query = 0.0
         self.error = None
+        self.connecting = False  # following an episode's redirects before the player starts
 
     @property
     def active(self):
@@ -105,6 +106,7 @@ class Player:
 
     def play(self, url, item, start=0, speed=1.0):
         self.stop(forget=False)
+        self.connecting = False
         mpv = find_mpv()
         if not mpv:
             self.error = "mpv isn't installed on this system."

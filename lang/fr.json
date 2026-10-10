@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "Annuaire des radios indisponible.",
     "mpv isn't installed on this system.": "mpv n’est pas installé sur ce système.",
     "This couldn't be played. The station or episode may be offline.": "Lecture impossible. La station ou l’épisode est peut-être hors ligne.",
+    "Streaming didn't work. Downloading the episode to play it…": "La lecture en streaming n’a pas fonctionné. Téléchargement de l’épisode pour le lire…",
     "This podcast's feed couldn't be read.": "Le flux de ce podcast n’a pas pu être lu.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "Pour les mises à jour, elle lit la dernière version publiée sur GitHub (vous pouvez désactiver cela dans Réglages) ; la mise à jour que vous choisissez d’installer est téléchargée depuis pocketkode.com. Elle n’envoie rien sur vous ni sur la console."
   },

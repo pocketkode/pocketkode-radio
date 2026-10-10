@@ -165,6 +165,7 @@
     "Radio directory unavailable.": "Zendergids niet beschikbaar.",
     "mpv isn't installed on this system.": "mpv is niet geïnstalleerd op dit systeem.",
     "This couldn't be played. The station or episode may be offline.": "Dit kon niet worden afgespeeld. De zender of aflevering is misschien offline.",
+    "Streaming didn't work. Downloading the episode to play it…": "Streamen lukte niet. De aflevering wordt gedownload om hem af te spelen…",
     "This podcast's feed couldn't be read.": "De feed van deze podcast kon niet worden gelezen.",
     "For updates it reads the latest release on GitHub (you can turn this off in Settings); an update you choose to install is downloaded from pocketkode.com. It sends nothing about you or the handheld.": "Voor updates leest de app de nieuwste release op GitHub (dit kun je uitzetten in Instellingen); een update die je kiest te installeren wordt gedownload van pocketkode.com. Hij stuurt niets over jou of de handheld."
   },
