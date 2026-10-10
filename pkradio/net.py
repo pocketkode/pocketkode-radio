@@ -34,13 +34,20 @@ def friendly(e):
     return f"Connection problem: {reason}"
 
 
-def open_url(url, timeout=20, headers=None):
+def open_url(url, timeout=20, headers=None, tries=2):
+    """Opens url; a connection that times out or drops is tried once more, with more time (Wi-Fi on a handheld
+    and some servers, like Apple's charts, are sometimes slow to answer)."""
     h = {"User-Agent": USER_AGENT, "Accept": "*/*"}
     h.update(headers or {})
-    try:
-        return urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout)
-    except (urllib.error.URLError, OSError, ValueError) as e:
-        raise NetError(friendly(e)) from e
+    for attempt in range(tries):
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=timeout * (attempt + 1))
+        except urllib.error.HTTPError as e:
+            raise NetError(friendly(e)) from e  # the server answered: trying again won't help
+        except (urllib.error.URLError, OSError, ValueError) as e:
+            print(f"[net] {urllib.parse.urlsplit(url).netloc}: {getattr(e, 'reason', e)} (try {attempt + 1})", flush=True)
+            if attempt + 1 == tries or isinstance(e, ValueError):
+                raise NetError(friendly(e)) from e
 
 
 def get_bytes(url, timeout=20, limit=16 << 20):

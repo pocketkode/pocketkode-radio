@@ -172,6 +172,8 @@ class Loading(View):
             self.error = str(e)
         except Exception as e:  # noqa: BLE001 - shown on screen
             self.error = _("Something went wrong: {e}", e=e)
+        if self.error:  # what failed, for logs/app.log
+            print(f"[load] {self.TITLE}: {self.error} ({time.monotonic() - self.t0:.0f}s)", flush=True)
         self.done = True
 
     def update(self):
