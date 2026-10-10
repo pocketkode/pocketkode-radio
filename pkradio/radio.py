@@ -1,12 +1,20 @@
 # © 2026 PocketKode. All rights reserved.
 """Internet radio stations from the public Radio Browser directory (radio-browser.info)."""
 import random
+import re
+import unicodedata
 
 from . import net
 
 FALLBACK_SERVERS = ["https://de1.api.radio-browser.info", "https://de2.api.radio-browser.info",
                     "https://fi1.api.radio-browser.info", "https://nl1.api.radio-browser.info"]
 PAGE = 40
+
+
+def _sort_name(name):
+    """"The Philippines" sorts under P, "Åland" next to "Aland", any case."""
+    name = re.sub(r"^the\s+", "", (name or "").strip(), flags=re.I)
+    return unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().casefold() or name.casefold()
 
 
 class Radio:
@@ -64,8 +72,9 @@ class Radio:
 
     def countries(self):
         rows = self._get("/json/countries", {"order": "stationcount", "reverse": "true", "hidebroken": "true"})
-        return [{"cc": r.get("iso_3166_1"), "name": r.get("name"), "count": r.get("stationcount", 0)}
-                for r in rows if r.get("iso_3166_1") and r.get("stationcount", 0) >= 5]
+        out = [{"cc": r.get("iso_3166_1"), "name": r.get("name"), "count": r.get("stationcount", 0)}
+               for r in rows if r.get("iso_3166_1") and r.get("stationcount", 0) >= 5]
+        return sorted(out, key=lambda c: _sort_name(c["name"]))  # A to Z, easier to find your own
 
     def genres(self):
         rows = self._get("/json/tags", {"order": "stationcount", "reverse": "true", "hidebroken": "true", "limit": 80})
