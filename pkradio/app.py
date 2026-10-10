@@ -21,7 +21,7 @@ from .store import Downloads, Store
 from .update_screen import UpdateScreen
 from .volume import HandheldVolume
 
-APP_VERSION = "2.0.0"
+APP_VERSION = "2.0.1"
 net.USER_AGENT = net.user_agent(APP_VERSION)
 ROW_H = 58
 LIST_TOP = 60
