@@ -1,6 +1,6 @@
 # PocketKode Radio
 
-**Internet radio and podcasts for muOS handhelds**, with the screen off to save battery. Free. No account, no ads, no tracking.
+**Internet radio and podcasts for muOS handhelds**, with the screen off to save battery.
 
 | | |
 |---|---|
