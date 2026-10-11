@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Everything the app remembers: favourite and recent stations, subscriptions, where each
 episode was stopped, downloads, settings. Saved as data/state.json."""
 import json

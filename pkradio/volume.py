@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """The handheld's own volume, which muOS sets with the VOL+ / VOL- buttons. Read (never changed) with PipeWire's
 wpctl, in the background, so Now playing can say when the sound is off."""
 import re

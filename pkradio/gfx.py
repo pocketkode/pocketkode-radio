@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Screen drawing: window, colours, text (English: the pixel font; other languages and names the pixel font can't
 show: a Noto font, see ttf.py), boxes, circles and bars."""
 import ctypes

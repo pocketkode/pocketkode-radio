@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Text in other languages (and names the pixel font can't show): drawn with the Noto Sans JP, SC or KR font
 (fonts/, SIL Open Font License) through the SDL2_ttf library that ships with muOS (nothing else is bundled).
 English keeps the app's own pixel font."""

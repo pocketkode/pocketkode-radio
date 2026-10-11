@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Audio playback with the mpv that ships with muOS, controlled over mpv's IPC socket."""
 import json
 import os

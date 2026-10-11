@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """PocketKode pixel font: 5x9 cells drawn for this app (no third-party font is used).
 
 Each glyph is 7 rows (capitals sit on row 6); letters with descenders have 9 rows.

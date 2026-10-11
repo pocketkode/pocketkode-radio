@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Internet radio stations from the public Radio Browser directory (radio-browser.info)."""
 import random
 import re

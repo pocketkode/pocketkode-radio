@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """In-app updates from the app's GitHub releases.
 
 - check: reads update.json from the latest release (version, notes, size, sha256, signature, url). Nothing is

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 # Builds PocketKodeRadio.muxapp (the installable muOS package) from this source folder.
 #
 # Usage:   ./build.sh            build dist/PocketKodeRadio.muxapp

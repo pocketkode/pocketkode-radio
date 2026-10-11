@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Buttons and the d-pad, read straight from the Linux input device.
 
 Reading the device itself (instead of a game-controller mapping) gives every button muOS knows

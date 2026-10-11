@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """The app's language: English, 日本語, Español, Français, Deutsch, Nederlands, Русский, 简体中文 or 한국어.
 
 The choice ("auto" or a language code) is kept in data/language. Auto follows muOS's own language setting

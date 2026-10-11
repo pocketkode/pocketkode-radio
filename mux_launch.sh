@@ -2,7 +2,7 @@
 # HELP: Internet radio and podcasts, with the screen off to save battery
 # ICON: pocketkoderadio
 # GRID: PocketKode Radio
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 
 . /opt/muos/script/var/func.sh
 

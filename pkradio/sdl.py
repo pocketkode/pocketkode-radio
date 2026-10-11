@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """The few SDL2 functions the app needs, called directly from the SDL2 library that ships with
 muOS (nothing is bundled). Only video is used: buttons and sticks are read from the input
 device itself (see pad.py)."""

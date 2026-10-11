@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """PocketKode Radio screens: radio, podcasts, now playing, keyboard, settings."""
 import ctypes
 import os
@@ -21,7 +21,7 @@ from .store import Downloads, Store
 from .update_screen import UpdateScreen
 from .volume import HandheldVolume
 
-APP_VERSION = "2.0.1"
+APP_VERSION = "2.0.2"
 net.USER_AGENT = net.user_agent(APP_VERSION)
 ROW_H = 58
 LIST_TOP = 60
@@ -809,7 +809,7 @@ class About(View):
                               "community Radio Browser directory (radio-browser.info). Podcast search and charts come "
                               "from Apple's public podcast directory, and episodes from each show's own feed. "
                               "Nothing is recorded or re-shared."), W - 48, gap=2) + 8
-        for line, c in [("© 2026 PocketKode. All rights reserved.", C["text"]),
+        for line, c in [("© 2026 PocketKode · GNU GPL v3", C["text"]),
                         ("pocketkode.com/apps/pocketkode-radio", C["dim"]),
                         ("feedback@pocketkode.com", C["dim"])]:
             y = s.para(24, y, line, W - 48, 2, c, gap=2)

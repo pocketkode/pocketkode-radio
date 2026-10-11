@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Stops muOS from dimming the screen / going to sleep while audio is playing.
 
 muOS uses two mechanisms (see /opt/muos/script/mux/idle.sh and hotkey.sh):

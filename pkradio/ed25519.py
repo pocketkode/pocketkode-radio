@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Ed25519 signature checking (RFC 8032). Only verification is needed: update packages are signed by
 PocketKode and checked on the handheld with the public key (see updater.py)."""
 import hashlib

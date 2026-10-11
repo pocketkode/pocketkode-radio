@@ -1,4 +1,4 @@
-# © 2026 PocketKode. All rights reserved.
+# © 2026 PocketKode · SPDX-License-Identifier: GPL-3.0-only
 """Web requests: JSON, feeds and episode downloads, with messages people can understand."""
 import json
 import os
