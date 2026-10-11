@@ -6,6 +6,8 @@
 |---|---|
 | ![Home screen](screenshots/home.png) | ![Radio menu](screenshots/radio.png) |
 | ![Top stations](screenshots/top-stations.png) | ![Now playing](screenshots/now-playing.png) |
+| ![Podcasts](screenshots/podcasts.png) | ![Podcast search](screenshots/podcast-search.png) |
+| ![A podcast's episodes, with progress](screenshots/episodes.png) | ![Stations by genre](screenshots/genres.png) |
 
 - **Radio:** thousands of stations from around the world (top stations, by country, by genre, search), favourites and
   **My country**.
