@@ -46,7 +46,7 @@ done
 echo "==> Assembling app folder"
 rm -rf "$DIST/stage"
 mkdir -p "$STAGE/glyph" "$STAGE/lang" "$STAGE/pkradio"
-cp "$SRC/main.py" "$SRC/mux_launch.sh" "$SRC/mux_lang.ini" "$SRC/README.md" "$SRC/LICENSE" "$STAGE/"
+cp "$SRC/main.py" "$SRC/mux_launch.sh" "$SRC/mux_lang.ini" "$SRC/README.md" "$SRC/LICENSE" "$SRC/NOTICE" "$STAGE/"
 cp "$SRC"/pkradio/*.py "$STAGE/pkradio/"
 cp "$SRC"/lang/*.json "$STAGE/lang/"
 cp "$SRC"/glyph/* "$STAGE/glyph/"
